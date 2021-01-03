@@ -12,6 +12,7 @@ def get_name():
 
     print()
     asking = True
+    name = ""
     while asking:
         print("Hi, my name is GUMP-9000.")
         name = input("What is your first name? ")
@@ -40,6 +41,7 @@ def show_menu(name: str, state: int):
     '''
 
     asking = True
+    value = ""
     while asking:
         menu_title = name + "'s Menu"
         input_string = ""
@@ -118,6 +120,7 @@ def get_rule(name: str):
     INPUT:   Manually entered rule.
     RETURNS: List of left and right sides of rule.
     '''
+    rule = ""
     re_word = re.compile("\w+")
     arrow = "->"
 
@@ -158,7 +161,7 @@ def get_frequency(name: str):
     INPUT:   Manual input of integer
     RETURNS: Integer value
     '''
-
+    freq_num = 0
     print()
     asking = True
     while asking:
@@ -299,6 +302,7 @@ def print_freq_results(all_lists: list, min_support: int):
     '''
     cand_count = 2
     rounds = 0
+    candidates = []
     while cand_count > 1 or rounds > 10:
         rounds += 1
         print()
@@ -337,6 +341,7 @@ count = 0
 name = get_name()
 running = True
 state = 1
+all_lists = []
 while running:
     option = show_menu(name, state)
     if option == "0":
