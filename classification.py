@@ -51,9 +51,9 @@ def show_menu(name: str, state: int):
         print("0) Quit.")
         print("1) Enter a set of lists.")
         if state > 1:
-            print("2) Calculate Support and Confidence for rules.")
+            print("2) Calculate Support, Confidence, and Lift for rules.")
             print("3) Determine frequent lists of items.")
-            input_string = "Please enter a number from 0 to 4: "
+            input_string = "Please enter a number from 0 to 3: "
         else:
             input_string = "Please select either 0 or 1: "
 
@@ -271,18 +271,21 @@ def count_items(all_lists: list, comp_list: list):
 
 def calc_items(all_lists: list, this_rule: list):
     '''
-    Calculates Support and Confidence of specific rule.
+    Calculates Support, Confidence, and Lift of specific rule.
 
     INPUT:   All lists entered by user, user rule split into lists.
-    RETURNS: 2-Tuple of support and confidence measures.
+    RETURNS: 3-Tuple of support, confidence, and lift measures.
     '''
     left_count = count_items(all_lists, this_rule[0])
     together_rule = this_rule[0] + this_rule[1]
     together_count = count_items(all_lists, together_rule)
     support = together_count/len(all_lists)
     confidence = together_count/left_count
+    right_count = count_items(all_lists, this_rule[1])
+    right_support = right_count/len(all_lists)
+    lift = confidence/right_support
 
-    return (support, confidence)
+    return (support, confidence, lift)
 
 
 def print_freq_results(all_lists: list, min_support: int):
@@ -343,10 +346,12 @@ while running:
         more_rules = True
         while more_rules:
             rule = get_rule(name)
-            sc_tuple = calc_items(all_lists, rule)
-            supp_percent = round(sc_tuple[0]*100, 1)
-            conf_percent = round(sc_tuple[1]*100, 1)
-            print(f"Support: {supp_percent}%, Confidence: {conf_percent}%")
+            scl_tuple = calc_items(all_lists, rule)
+            supp_percent = round(scl_tuple[0]*100, 1)
+            conf_percent = round(scl_tuple[1]*100, 1)
+            lift_percent = round(scl_tuple[2]*100, 1)
+            print(
+                f"Support: {supp_percent}%, Confidence: {conf_percent}%, Lift: {lift_percent}%")
             print()
             more = input("More Rules (Y/N)? ")
             if more.lower() != "y":
