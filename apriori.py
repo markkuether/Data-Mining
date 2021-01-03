@@ -45,7 +45,7 @@ def show_menu(name: str, state: int):
         input_string = ""
         print()
         print(f"Hello {name}. Here are your options.")
-        # print()
+        print()
         print(menu_title)
         print("="*len(menu_title))
         print("0) Quit.")
@@ -78,10 +78,12 @@ def get_all_lists(name: str):
     '''
 
     instr = '''
-    Enter all lists, with individual items seperated by a comma. (i.e. a, b, c, d)
-    If you make a mistake, type "-" to retype the previous list.
-    When you are finished, type "Done" to stop.
-    Spaces between items and capitalization is ignored (i.e. bread,milk = Bread, Milk)
+    - Enter all lists, with individual items seperated by a comma.
+    (i.e. a,b,c,d)
+    - If you make a mistake, type "-" to retype the previous list.
+    - When you are finished, type "Done" to stop.
+    - Spaces between items and capitalization is ignored 
+    (i.e. bread,milk = Bread, Milk)
 
     '''
 

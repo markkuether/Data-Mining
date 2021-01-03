@@ -10,8 +10,8 @@ def instructions():
     This program collects categorical data and calculates the information
     needed and gained for each category. This can be used to determine
     the effectiveness of each split in a tree.  
-    The information can be either be entered manually, 
-    or read in from a CSV file.
+    The information can either be entered manually, or read in from a 
+    CSV file.
 
     CSV ENTERED DATA:
     =================
